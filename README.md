@@ -4,7 +4,6 @@ A responsive single-page portfolio for showcasing the work of Nazar Pauk, an aut
 
 ## Features
 - Hero, About, Portfolio, and Contact sections with smooth scrolling navigation.
-- Updated biography, low-code positioning, and illustrated portrait tailored to Nazar Pauk.
 - Responsive project grid linking to detailed case study pages.
 - Accessible contact form and prominent social links.
 - Lightweight fade-in animations that activate on scroll.
