@@ -117,24 +117,74 @@ a {
   margin-top: 3rem;
 }
 
+.hero-text {
+  display: grid;
+  gap: 1.1rem;
+  max-width: 520px;
+}
+
+.role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--primary);
+  background: rgba(37, 99, 235, 0.12);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.15);
+}
+
 .hero-text h1 {
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   margin: 0.2rem 0 0.6rem;
   letter-spacing: -0.02em;
 }
 
-.greeting {
-  font-weight: 500;
+.subtitle {
+  margin: 0;
   color: var(--muted);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  font-size: 0.85rem;
+  max-width: 32ch;
 }
 
-.subtitle {
-  margin-bottom: 2rem;
-  color: var(--muted);
-  max-width: 28ch;
+.hero-description {
+  margin: 0 0 2.5rem;
+  max-width: 48ch;
+  color: var(--text);
+  font-size: 1.05rem;
+}
+
+.hero-image {
+  position: relative;
+  display: grid;
+  place-items: center;
+  max-width: 360px;
+  justify-self: center;
+}
+
+.hero-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 88%;
+  height: 88%;
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(34, 211, 238, 0.25));
+  filter: blur(0);
+  z-index: 0;
+  transform: rotate(-4deg);
+}
+
+.hero-photo {
+  position: relative;
+  z-index: 1;
+  width: min(320px, 82vw);
+  border-radius: 32px;
+  box-shadow: 0 30px 50px rgba(15, 23, 42, 0.2);
 }
 
 .hero-actions {
@@ -204,19 +254,49 @@ a {
   max-width: 60ch;
 }
 
-.skills {
-  margin-top: 2rem;
-  display: flex;
-  flex-wrap: wrap;
+.about-layout {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: start;
+}
+
+.about-copy p + p {
+  margin-top: 1.25rem;
+}
+
+.about-highlights {
+  background: var(--surface);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.about-highlights h3 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+.skills-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 0.75rem;
 }
 
-.skill {
-  background: var(--surface);
-  padding: 0.6rem 1.1rem;
-  border-radius: 999px;
-  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.05);
-  font-weight: 500;
+.skills-grid li {
+  background: rgba(15, 23, 42, 0.04);
+  border-radius: 14px;
+  padding: 0.7rem 1rem;
+  font-weight: 600;
+  color: var(--text);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+  line-height: 1.4;
 }
 
 .portfolio-grid {
@@ -368,6 +448,25 @@ a {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .role-badge {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+  }
+
+  .hero-image::before {
+    display: none;
+  }
+
+  .about-highlights {
+    padding: 1.5rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 }
 

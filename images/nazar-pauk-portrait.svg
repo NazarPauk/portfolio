@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 640" role="img" aria-labelledby="title desc">
+  <title id="title">Stylized portrait of Nazar Pauk</title>
+  <desc id="desc">Illustrated portrait of Nazar Pauk standing on a hillside at sunset with a cityscape in the background.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fef3c7" />
+      <stop offset="50%" stop-color="#fde68a" />
+      <stop offset="100%" stop-color="#bfdbfe" />
+    </linearGradient>
+    <linearGradient id="hills" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2dd4bf" />
+      <stop offset="100%" stop-color="#22c55e" />
+    </linearGradient>
+    <linearGradient id="shirt" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#dbeafe" />
+    </linearGradient>
+    <clipPath id="portrait-frame">
+      <rect x="40" y="32" width="480" height="576" rx="96" />
+    </clipPath>
+  </defs>
+  <g clip-path="url(#portrait-frame)">
+    <rect x="40" y="32" width="480" height="576" rx="96" fill="url(#sky)" />
+    <path d="M40 424c80-32 152-48 240-32s160 80 240 64v152H40V424z" fill="url(#hills)" opacity="0.85" />
+    <path d="M40 448c84-10 142-22 224 10s164 52 296 20v136H40V448z" fill="#15803d" opacity="0.5" />
+    <g transform="translate(0,32)">
+      <ellipse cx="280" cy="476" rx="180" ry="84" fill="#0f172a" opacity="0.08" />
+      <g transform="translate(160 120)">
+        <path d="M120 356c-36 0-72-10-96-28 10-68 22-108 36-120 20-18 60-26 96-26s76 8 96 26c14 12 26 52 36 120-24 18-60 28-96 28z" fill="url(#shirt)" />
+        <path d="M120 120c-46 0-84 36-84 96s38 120 84 120 84-60 84-120-38-96-84-96z" fill="#fee2d5" />
+        <path d="M120 116c-44 0-80 34-80 90 18 6 36-8 44-24 4-8 8-18 12-22 6-6 22-12 24-28 28 18 58 18 82 0 2 16 16 20 22 30 8 14 28 30 46 20-4-56-40-90-80-90-14 10-56 10-70 0z" fill="#1f2937" opacity="0.12" />
+        <path d="M82 156c0-24 18-44 38-44h36c20 0 38 20 38 44v22c0 46-34 84-74 84s-74-38-74-84z" fill="#fde7db" />
+        <path d="M108 136c12 8 36 14 48 14s34-6 48-14c0-28-16-50-48-50s-48 22-48 50z" fill="#0f172a" />
+        <path d="M96 200a16 16 0 1 0 32 0 16 16 0 1 0-32 0zm96 0a16 16 0 1 0 32 0 16 16 0 1 0-32 0z" fill="#1f2937" />
+        <path d="M116 230c8 10 20 16 32 16s24-6 32-16c-10-4-22-6-32-6s-22 2-32 6z" fill="#fca5a5" opacity="0.6" />
+        <path d="M92 248c12 12 32 20 52 20s40-8 52-20c-12 18-32 32-52 32s-40-14-52-32z" fill="#fee2d5" />
+      </g>
+    </g>
+    <path d="M40 176c40-12 92-20 144-8s96 48 176 50 144-26 200-58v-96H40z" fill="#0ea5e9" opacity="0.2" />
+    <g fill="#1d4ed8" opacity="0.35">
+      <circle cx="120" cy="180" r="6" />
+      <circle cx="180" cy="164" r="4" />
+      <circle cx="260" cy="188" r="5" />
+      <circle cx="340" cy="172" r="4" />
+      <circle cx="420" cy="184" r="6" />
+    </g>
+  </g>
+  <rect x="40" y="32" width="480" height="576" rx="96" fill="none" stroke="rgba(15,23,42,0.08)" stroke-width="4" />
+</svg>
