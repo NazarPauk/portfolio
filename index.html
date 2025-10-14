@@ -1,1 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nazar Pauk | Automation Engineer & No-Code Developer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header" id="hero">
+    <div class="container nav-container">
+      <div class="logo">NP</div>
+      <nav class="nav" aria-label="Primary">
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation">☰</button>
+        <ul id="primary-navigation" class="nav-list">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="container hero-content fade-in">
+      <div class="hero-text">
+        <p class="greeting">Hello, I’m</p>
+        <h1>Nazar Pauk</h1>
+        <p class="subtitle">Automation Engineer / No-Code Developer</p>
+        <div class="hero-actions">
+          <a href="#portfolio" class="btn primary">View Portfolio</a>
+          <a href="#contact" class="btn secondary">Contact Me</a>
+        </div>
+      </div>
+      <figure class="hero-image">
+        <img src="./images/profile.svg" alt="Stylized monogram with initials NP" />
+      </figure>
+    </div>
+  </header>
 
+  <main>
+    <section id="about" class="section fade-in">
+      <div class="container">
+        <h2>About</h2>
+        <p class="section-intro">I’m an Automation Engineer specializing in Make.com, API integrations, CRM systems, Telegram bots, and AI assistants. I help businesses streamline operations and improve efficiency through intelligent automation.</p>
+        <div class="skills">
+          <div class="skill">Make.com</div>
+          <div class="skill">API</div>
+          <div class="skill">CRM</div>
+          <div class="skill">Telegram Bots</div>
+          <div class="skill">ClickUp</div>
+          <div class="skill">AI Integration</div>
+          <div class="skill">Google Sheets/Drive</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="section fade-in">
+      <div class="container">
+        <h2>Portfolio</h2>
+        <p class="section-intro">Automation solutions, integrations, and no-code experiences built to deliver measurable impact.</p>
+        <div class="portfolio-grid">
+          <article class="project-card">
+            <img src="./images/project1.svg" alt="Automation project 1" />
+            <div class="project-content">
+              <h3>CRM Automation Suite</h3>
+              <p>Designed end-to-end Make.com workflows that connect CRM, email marketing, and invoicing tools with zero manual effort.</p>
+              <a class="btn tertiary" href="./projects/crm-automation-suite.html">View Project</a>
+            </div>
+          </article>
+          <article class="project-card">
+            <img src="./images/project2.svg" alt="Automation project 2" />
+            <div class="project-content">
+              <h3>Telegram Support Bot</h3>
+              <p>Launched a multilingual Telegram bot that provides instant updates from internal systems and reduces response times.</p>
+              <a class="btn tertiary" href="./projects/telegram-support-bot.html">View Project</a>
+            </div>
+          </article>
+          <article class="project-card">
+            <img src="./images/project3.svg" alt="Automation project 3" />
+            <div class="project-content">
+              <h3>AI-Powered Lead Assistant</h3>
+              <p>Combined AI and no-code tools to qualify leads, schedule meetings, and sync data across CRM and analytics dashboards.</p>
+              <a class="btn tertiary" href="./projects/ai-lead-assistant.html">View Project</a>
+            </div>
+          </article>
+          <article class="project-card">
+            <img src="./images/project4.svg" alt="Automation project 4" />
+            <div class="project-content">
+              <h3>ClickUp Project Automations</h3>
+              <p>Implemented advanced ClickUp automations that trigger task creation, stakeholder alerts, and progress reports in real time.</p>
+              <a class="btn tertiary" href="./projects/clickup-automations.html">View Project</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section fade-in">
+      <div class="container contact-wrapper">
+        <div class="contact-intro">
+          <h2>Let’s Build Something</h2>
+          <p>Share your challenges and I’ll craft an automation that saves time, reduces errors, and empowers your team to focus on what matters most.</p>
+          <div class="social-links">
+            <a href="https://t.me/" class="social" aria-label="Telegram">Telegram</a>
+            <a href="https://www.linkedin.com/" class="social" aria-label="LinkedIn">LinkedIn</a>
+            <a href="https://www.upwork.com/" class="social" aria-label="Upwork">Upwork</a>
+            <a href="https://github.com/" class="social" aria-label="GitHub">GitHub</a>
+          </div>
+        </div>
+        <form class="contact-form" aria-label="Contact form">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell me about your project" required></textarea>
+
+          <button type="submit" class="btn primary">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Nazar Pauk. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
