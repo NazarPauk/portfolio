@@ -52,6 +52,14 @@
     @media (min-width: 1080px) {
       .gallery-grid {
         grid-template-columns: repeat(2, minmax(420px, 1fr));
+
+      }
+    }
+    @supports (grid-template-rows: masonry) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(320px, 1fr));
+        grid-template-rows: masonry;
+        grid-auto-flow: dense;
       }
     }
     .gallery-grid figure {
@@ -80,6 +88,17 @@
     @media (min-width: 900px) {
       .command-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @supports (grid-template-rows: masonry) {
+      .command-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: masonry;
+        grid-auto-flow: dense;
+      }
+      .command-card,
+      .support-card {
+        break-inside: avoid;
       }
     }
     .command-card {
