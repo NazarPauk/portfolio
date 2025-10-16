@@ -89,7 +89,7 @@
 
       overlay.innerHTML = `
         <div class="lightbox-content">
-          <button type="button" class="lightbox-close" aria-label="Close image preview">Close</button>
+          <button type="button" class="lightbox-close" aria-label="Close image preview">&times;</button>
           <img class="lightbox-media" alt="" />
           <p class="lightbox-caption"></p>
         </div>
