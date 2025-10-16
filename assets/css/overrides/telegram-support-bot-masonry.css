@@ -1,0 +1,56 @@
+/* Link this file in projects/telegram-support-bot.html head */
+/* Swap the existing command container class to include .masonry */
+/* /assets/css/overrides/telegram-support-bot-masonry.css */
+
+/* Fallback: columns masonry */
+.telegram-support-bot-page .masonry {
+  column-width: 360px;
+  column-gap: 24px;
+}
+.telegram-support-bot-page .masonry > .card {
+  break-inside: avoid;
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 24px;
+}
+@media (max-width: 768px) {
+  .telegram-support-bot-page .masonry {
+    column-width: auto;
+    column-count: 1;
+  }
+}
+@media (min-width: 1024px) {
+  .telegram-support-bot-page .masonry {
+    column-width: initial;
+    column-count: 3;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .telegram-support-bot-page .masonry {
+    column-width: initial;
+    column-count: 2;
+  }
+}
+
+/* Progressive enhancement: Grid masonry */
+@supports (grid-template-rows: masonry) {
+  .telegram-support-bot-page .masonry {
+    column-width: initial;
+    column-count: initial;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-rows: masonry;
+    gap: 24px;
+  }
+  .telegram-support-bot-page .masonry > .card {
+    display: block;
+    margin: 0;
+  }
+}
+
+/* Stability */
+.telegram-support-bot-page .masonry img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

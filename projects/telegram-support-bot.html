@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Telegram Support Bot | Nazar Pauk</title>
   <link rel="stylesheet" href="../styles.css">
+  <!-- Link masonry overrides for this page only -->
+  <link rel="stylesheet" href="../assets/css/overrides/telegram-support-bot-masonry.css">
   <style>
     body {
       background: var(--bg);
@@ -26,13 +28,13 @@
     }
     .project-content {
       background: var(--surface);
-      padding: 2.5rem;
+      padding: clamp(1.75rem, 2vw + 1.5rem, 2.75rem);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      max-width: 960px;
+      max-width: 1080px;
       margin: 0 auto;
       display: grid;
-      gap: 2.5rem;
+      gap: clamp(2rem, 4vw, 3rem);
       text-align: left;
     }
     .project-content section {
@@ -41,37 +43,48 @@
     }
     .gallery-grid {
       display: grid;
-      gap: 1.5rem;
+      gap: clamp(1.25rem, 2vw, 2rem);
+      justify-items: center;
     }
-    @media (min-width: 720px) {
+    @media (min-width: 640px) {
       .gallery-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      }
+    }
+    @media (min-width: 1080px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(420px, 1fr));
+      }
+    }
+    @supports (grid-template-rows: masonry) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(320px, 1fr));
+        grid-template-rows: masonry;
+        grid-auto-flow: dense;
       }
     }
     .gallery-grid figure {
       background: #f1f5f9;
       border-radius: var(--radius);
-      padding: 1rem;
+      padding: clamp(0.75rem, 1.5vw, 1.25rem);
       box-shadow: var(--shadow);
       display: grid;
-      gap: 0.75rem;
+      gap: 0.85rem;
+      width: 100%;
+      max-width: 560px;
     }
     .gallery-grid img {
       width: 100%;
       border-radius: calc(var(--radius) * 0.75);
+      box-shadow: var(--shadow-sm, 0 12px 24px rgba(15, 23, 42, 0.12));
     }
     .gallery-grid figcaption {
       font-size: 0.9rem;
       color: var(--muted);
     }
     .command-grid {
-      display: grid;
-      gap: 1.75rem;
-    }
-    @media (min-width: 900px) {
-      .command-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      display: block;
+      margin: 0;
     }
     .command-card {
       background: #f1f5f9;
@@ -94,16 +107,53 @@
     .command-card figure {
       margin: 0;
       display: grid;
-      gap: 0.6rem;
+      gap: 0.75rem;
+    }
+    .command-card .image-stack {
+      display: grid;
+      gap: 0.75rem;
+    }
+    .command-card .image-stack.two-up {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      align-items: start;
     }
     .command-card img {
       width: 100%;
       border-radius: calc(var(--radius) * 0.75);
       box-shadow: var(--shadow);
     }
+    @media (max-width: 599px) {
+      .command-card img {
+        max-width: 360px;
+        justify-self: center;
+      }
+    }
     .command-card figcaption {
       font-size: 0.85rem;
       color: var(--muted);
+    }
+    .support-card {
+      background: #f8fafc;
+      border-radius: var(--radius);
+      padding: clamp(1.25rem, 1.5vw + 1rem, 1.75rem);
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 0.85rem;
+      align-content: start;
+    }
+    .support-card h3 {
+      margin: 0;
+      color: var(--primary);
+      font-size: 1.05rem;
+    }
+    .support-card p {
+      margin: 0;
+    }
+    .support-card ul {
+      margin: 0;
+      padding-left: 1.1rem;
+      display: grid;
+      gap: 0.35rem;
     }
     .back-link {
       display: inline-flex;
@@ -115,7 +165,7 @@
     }
   </style>
 </head>
-<body>
+<body class="telegram-support-bot-page">
   <main class="project-page container">
     <a class="back-link" href="../index.html">&larr; Back to Portfolio</a>
     <header class="project-header">
@@ -138,107 +188,165 @@
           </figure>
         </div>
       </section>
-      <section>
+      <section class="command-walkthrough">
         <h2>Command Walkthrough</h2>
-        <div class="command-grid">
-          <article class="command-card" aria-labelledby="cmd-start">
-            <h3 id="cmd-start">/start</h3>
-            <ul>
-              <li>Initializes the bot and displays the main navigation menu.</li>
-              <li>Creates or updates the user record in Google Sheets with name, chat ID, and start time.</li>
-              <li>Sends a short onboarding message that explains how to use the assistant.</li>
-            </ul>
-            <figure>
-              <img src="../images/telegram-bot/TGBOT_Start.png" alt="Telegram bot start command screenshot">
-              <figcaption>Welcome sequence that introduces the bot and registers the user automatically.</figcaption>
-            </figure>
-          </article>
-          <article class="command-card" aria-labelledby="cmd-catalog">
-            <h3 id="cmd-catalog">/catalog</h3>
-            <ul>
-              <li>Shows product and service categories with interactive buttons.</li>
-              <li>Pulls relevant items and assets from Google Sheets or linked files.</li>
-              <li>Offers quick redirection to forms or landing pages for deeper exploration.</li>
-            </ul>
-            <figure>
-              <img src="../images/telegram-bot/TGBOT_catalog.png" alt="Catalog command showing product categories">
-              <figcaption>Dynamic catalog interface populated by Google Sheets data.</figcaption>
-            </figure>
-          </article>
-          <article class="command-card" aria-labelledby="cmd-price">
-            <h3 id="cmd-price">/price</h3>
-            <ul>
-              <li>Retrieves the latest pricing table from Google Sheets.</li>
-              <li>Sends a summarized list or a downloadable document with detailed pricing.</li>
-            </ul>
-            <figure>
-              <img src="../images/telegram-bot/TGBOT_price.png" alt="Price command with current pricing options">
-              <figcaption>Pricing view that always stays synchronized with the live spreadsheet.</figcaption>
-            </figure>
-          </article>
-          <article class="command-card" aria-labelledby="cmd-faq">
-            <h3 id="cmd-faq">/faq</h3>
-            <ul>
-              <li>Presents frequently asked questions grouped by topic.</li>
-              <li>Returns predefined answers that update dynamically from Google Sheets.</li>
-              <li>Provides instant clarification on catalog, delivery, warranty, support, and more.</li>
-            </ul>
-            <figure>
-              <img src="../images/telegram-bot/TGBOT_faq.png" alt="FAQ command with interactive question buttons">
-              <figcaption>Structured FAQ explorer that keeps answers consistent across channels.</figcaption>
-            </figure>
-          </article>
-          <article class="command-card" aria-labelledby="cmd-contacts">
-            <h3 id="cmd-contacts">/contacts</h3>
-            <ul>
-              <li>Displays Telegram, email, and instant contact shortcuts to reach a manager.</li>
-              <li>Uses interactive buttons so users can start a conversation without leaving the chat.</li>
-            </ul>
-          </article>
-          <article class="command-card" aria-labelledby="cmd-assistant">
-            <h3 id="cmd-assistant">/assistant</h3>
-            <ul>
-              <li>Activates the AI assistant that analyzes uploaded catalog data.</li>
-              <li>Suggests products and solutions tailored to user requirements.</li>
-              <li>Escalates to a live manager whenever the dataset is insufficient.</li>
-            </ul>
-            <figure>
-              <img src="../images/telegram-bot/TGBOT_responseai.png" alt="AI assistant responding inside Telegram">
-              <figcaption>AI-driven responses enriched with product data and escalation logic.</figcaption>
-            </figure>
-          </article>
-          <article class="command-card" aria-labelledby="cmd-manager">
-            <h3 id="cmd-manager">/manager</h3>
-            <ul>
-              <li>Routes user questions directly to a dedicated manager group.</li>
-              <li>Enables two-way communication without revealing user contact details.</li>
-              <li>Streams every exchange back to Google Sheets for accountability.</li>
-            </ul>
-          </article>
-          <article class="command-card" aria-labelledby="cmd-help">
-            <h3 id="cmd-help">/help</h3>
-            <ul>
-              <li>Summarizes the purpose of each command in a concise guide.</li>
-              <li>Provides a link to support or feedback forms for further assistance.</li>
-            </ul>
-          </article>
-          <article class="command-card" aria-labelledby="cmd-about">
-            <h3 id="cmd-about">/about</h3>
-            <ul>
-              <li>Presents a short description of the company’s mission and services.</li>
-              <li>Gives users context about the brand they are interacting with.</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-      <section>
-        <h2>Additional Features</h2>
-        <ul>
-          <li>Support for callback buttons and conditional logic across Make.com scenarios.</li>
-          <li>Comprehensive interaction logging inside Google Sheets for analytics.</li>
-          <li>Dynamic messages enhanced with user geolocation data.</li>
-          <li>Battery-level detection module that sends personalized alerts and upsell prompts.</li>
-        </ul>
+        <!-- Replace your current cards container on this page with: -->
+        <!--
+        <section class="masonry">
+          <article class="card">…</article>
+          <article class="card">…</article>
+        </section>
+        -->
+        <section class="command-grid masonry">
+            <article class="command-card card" aria-labelledby="cmd-start">
+              <h3 id="cmd-start">/start</h3>
+              <ul>
+                <li>Initializes the bot and displays the main navigation menu.</li>
+                <li>Creates or updates the user record in Google Sheets with name, chat ID, and start time.</li>
+                <li>Sends a short onboarding message that explains how to use the assistant.</li>
+              </ul>
+              <figure>
+                <div class="image-stack two-up">
+                  <img src="../images/telegram-bot/TGBOT_Start.png" alt="Original Telegram bot start command onboarding screen">
+                  <img src="../images/telegram-bot/TGBOT_start_make.png" alt="Refreshed Telegram bot start command onboarding screen">
+                </div>
+                <figcaption>Original and refreshed welcome sequences that register the user and guide them through the main menu.</figcaption>
+              </figure>
+            </article>
+            <article class="command-card card" aria-labelledby="cmd-catalog">
+              <h3 id="cmd-catalog">/catalog</h3>
+              <ul>
+                <li>Shows product and service categories with interactive buttons.</li>
+                <li>Pulls relevant items and assets from Google Sheets or linked files.</li>
+                <li>Offers quick redirection to forms or landing pages for deeper exploration.</li>
+              </ul>
+              <figure>
+                <img src="../images/telegram-bot/TGBOT_catalog.png" alt="Catalog command showing product categories">
+                <figcaption>Dynamic catalog interface populated by Google Sheets data.</figcaption>
+              </figure>
+            </article>
+            <article class="command-card card" aria-labelledby="cmd-price">
+              <h3 id="cmd-price">/price</h3>
+              <ul>
+                <li>Retrieves the latest pricing table from Google Sheets, sharing it as a concise summary or downloadable sheet.</li>
+                <li>Step 1: prompts the user to choose between compressors or drilling machines.</li>
+                <li>Compressor flow: select electric or diesel → capture pressure and flow requirements.</li>
+                <li>Drilling flow: request the bore diameter before preparing recommendations.</li>
+                <li>Writes every answer into Google Sheets (Sheet 2) for later personalization.</li>
+                <li>Returns the AI assistant’s best match from the catalog with a “Contact a manager” button.</li>
+              </ul>
+              <figure>
+                <div class="image-stack two-up">
+                  <img src="../images/telegram-bot/TGBOT_price.png" alt="Original Telegram bot pricing flow screen">
+                  <img src="../images/telegram-bot/TGBOT_Price_make.png" alt="Step-based Telegram bot pricing assistant flow">
+                </div>
+                <figcaption>Side-by-side pricing flows showing the legacy price sheet and the new guided assistant with data capture.</figcaption>
+              </figure>
+            </article>
+            <article class="command-card card" aria-labelledby="cmd-faq">
+              <h3 id="cmd-faq">/faq</h3>
+              <ul>
+                <li>Presents frequently asked questions grouped by topic with answers that stay in sync with Google Sheets.</li>
+                <li>Provides instant clarification on catalog, delivery, warranty, support, and more.</li>
+                <li>Interactive callback buttons reveal each answer in a clean, quoted format while Make orchestrates the flow.</li>
+              </ul>
+              <figure>
+                <div class="image-stack two-up">
+                  <img src="../images/telegram-bot/TGBOT_faq.png" alt="Original FAQ command with quick reply buttons">
+                  <img src="../images/telegram-bot/TGBOT_faq_make.png" alt="Updated FAQ command with callback buttons and quoted answers">
+                </div>
+                <figcaption>FAQ experiences transitioning from the original quick replies to the new callback-driven explorer.</figcaption>
+              </figure>
+            </article>
+            <article class="command-card card" aria-labelledby="cmd-contacts">
+              <h3 id="cmd-contacts">/contacts</h3>
+              <ul>
+                <li>Displays Telegram, email, and instant contact shortcuts so users can reach a manager without leaving chat.</li>
+                <li>Message templates keep social links one tap away and ensure consistent outreach across every channel.</li>
+              </ul>
+            </article>
+            <article class="command-card card" aria-labelledby="cmd-assistant">
+              <h3 id="cmd-assistant">/assistant</h3>
+              <ul>
+                <li>Activates the AI assistant that analyzes curated catalog data to suggest tailored products.</li>
+                <li>Shares confident recommendations in-chat, enriched with the best-fit catalog entries from CSV tables.</li>
+                <li>Escalates to a live manager whenever the dataset is insufficient or confidence drops.</li>
+              </ul>
+              <figure>
+                <div class="image-stack two-up">
+                  <img src="../images/telegram-bot/TGBOT_responseai.png" alt="Original AI assistant response inside the Telegram bot">
+                  <img src="../images/telegram-bot/TGBOT_preview.png" alt="Updated AI assistant preview delivering tailored suggestions">
+                </div>
+                <figcaption>AI assistant responses shown in both the original interface and the updated preview-focused design.</figcaption>
+              </figure>
+            </article>
+            <article class="command-card card" aria-labelledby="cmd-manager">
+              <h3 id="cmd-manager">/manager</h3>
+              <ul>
+                <li>Routes user questions directly to a dedicated manager group while keeping contact details private.</li>
+                <li>Creates a dedicated thread for each client and reuses it for future requests—no duplicates.</li>
+                <li>Streams every exchange back to Google Sheets and triggers selective notifications when a manager joins.</li>
+              </ul>
+            </article>
+            <article class="command-card card" aria-labelledby="cmd-help">
+              <h3 id="cmd-help">/help</h3>
+              <ul>
+                <li>Summarizes the purpose of each command in a concise guide.</li>
+                <li>Provides a link to support or feedback forms for further assistance.</li>
+              </ul>
+            </article>
+            <article class="command-card card" aria-labelledby="cmd-about">
+              <h3 id="cmd-about">/about</h3>
+              <ul>
+                <li>Presents a short description of the company’s mission and services.</li>
+                <li>Gives users context about the brand they are interacting with.</li>
+              </ul>
+            </article>
+            <section class="support-card card" aria-label="Ticketing and thread management details">
+              <h3>Ticketing &amp; Threads</h3>
+              <ul>
+                <li>Personal threads keep every client conversation tied to their dedicated manager space.</li>
+                <li>Auto-routing reuses existing threads when they exist; new ones spin up only when needed.</li>
+                <li>Two-way flow lets managers reply from the thread without losing context.</li>
+              </ul>
+            </section>
+            <section class="support-card card" aria-label="Make.com automation architecture summary">
+              <h3>Make.com Automation Architecture</h3>
+              <ul>
+                <li>Webhooks drive both commands and callbacks, while routers and filters steer state.</li>
+                <li>Google Sheets writes include structured fields, deduplication, and live status updates.</li>
+                <li>Centralized message templates keep social links embedded in every outbound message.</li>
+                <li>AI assistant integration surfaces catalog models using the parameters gathered in /price.</li>
+                <li>Resolved Gemini file-delivery issues ensure Make scenarios stay stable end to end.</li>
+              </ul>
+            </section>
+            <section class="support-card card" aria-label="Data and analytics coverage">
+              <h3>Data &amp; Analytics</h3>
+              <p><strong>Stored:</strong> command or scenario name, /price parameters, client questions, timestamp, chat and user IDs, escalation status, ticket ID or URL, and the active thread reference.</p>
+              <p>All records are normalized for reporting and to power personalized follow-ups.</p>
+            </section>
+            <section class="support-card card" aria-label="Reliability and safeguard measures">
+              <h3>Reliability &amp; Safeguards</h3>
+              <ul>
+                <li>Rate limits and selective notifications prevent alert storms.</li>
+                <li>Input validation normalizes formats such as phone numbers and symbols.</li>
+                <li>Fallback logic hands the conversation to a manager if the assistant lacks confidence.</li>
+              </ul>
+            </section>
+            <section class="support-card card" aria-label="Additional automation features">
+              <h3>Additional Features</h3>
+              <ul>
+                <li>Support for callback buttons and conditional logic across Make.com scenarios.</li>
+                <li>Comprehensive interaction logging inside Google Sheets for analytics.</li>
+                <li>Dynamic messages enhanced with user geolocation data.</li>
+                <li>Battery-level detection module that sends personalized alerts and upsell prompts.</li>
+                <li>Anti-spam logic prevents multiple commands from running in parallel for the same user.</li>
+                <li>Manager tickets post compact cards with client data and request summaries into the thread.</li>
+                <li>Battery alerts thank users above 50% charge and nudge booth visits when power dips below.</li>
+                <li>Helper scripts normalize text and special characters so every ticket reads consistently.</li>
+              </ul>
+            </section>
+        </section>
       </section>
     </section>
   </main>
