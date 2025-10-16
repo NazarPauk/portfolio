@@ -123,20 +123,12 @@ a {
   max-width: 520px;
 }
 
-.role-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.9rem;
+.hero-role {
+  margin: 0;
+  font-size: 1.05rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.02em;
   color: var(--primary);
-  background: linear-gradient(180deg, rgba(37, 99, 235, 0.2) 0%, rgba(37, 99, 235, 0) 100%);
-  padding: 3px 14px;
-  border-radius: 999px 999px 0 0;
-  line-height: 1.1;
-  white-space: nowrap;
 }
 
 .hero-text h1 {
@@ -555,9 +547,9 @@ a {
 }
 
 @media (max-width: 600px) {
-  .role-badge {
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
+  .hero-role {
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
   }
 
   .hero-image::before {
