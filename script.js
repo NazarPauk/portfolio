@@ -30,6 +30,22 @@
       setBodyNavState(willOpen);
       navList.classList.toggle('open', willOpen);
     });
+
+    document.addEventListener('click', (event) => {
+      if (!navList.classList.contains('open')) {
+        return;
+      }
+
+      const target = event.target;
+      if (
+        target instanceof Node &&
+        (navList.contains(target) || navToggle.contains(target))
+      ) {
+        return;
+      }
+
+      closeNavMenu();
+    });
   }
 
   navLinks.forEach((link) => {
