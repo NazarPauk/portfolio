@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NFC Lead Capture for Trade Shows | Nazar Pauk</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body {
+      background: var(--bg);
+    }
+    .project-page {
+      padding: 3.5rem 0 6rem;
+      display: grid;
+      gap: 2.5rem;
+    }
+    .project-header {
+      background: var(--surface);
+      padding: 2.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 1.5rem;
+    }
+    .project-header h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+    }
+    .project-meta {
+      display: grid;
+      gap: 0.5rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    .project-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .hero-figure {
+      margin: 0;
+      display: grid;
+      gap: 0.75rem;
+    }
+    .hero-figure figcaption {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .project-content {
+      display: grid;
+      gap: 2.5rem;
+    }
+    .project-section {
+      background: var(--surface);
+      padding: 2.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 1.5rem;
+    }
+    .project-section h2 {
+      margin: 0;
+    }
+    .project-section ul,
+    .project-section ol {
+      padding-left: 1.25rem;
+      margin: 0;
+      display: grid;
+      gap: 0.75rem;
+    }
+    .journey-steps {
+      display: grid;
+      gap: 2rem;
+    }
+    .journey-step {
+      display: grid;
+      gap: 1rem;
+    }
+    .journey-step h3 {
+      margin: 0;
+    }
+    .image-gallery {
+      display: grid;
+      gap: 1.5rem;
+    }
+    .image-gallery.half {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .image-gallery.full {
+      grid-template-columns: 1fr;
+    }
+    .image-gallery {
+      justify-items: center;
+    }
+    .image-gallery figure {
+      margin: 0;
+      display: grid;
+      gap: 0.75rem;
+      justify-items: center;
+    }
+    .image-gallery figcaption {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .figure-scale {
+      justify-self: center;
+    }
+    .figure-scale img {
+      width: 100%;
+      height: auto;
+    }
+    .scale-80 {
+      width: min(80%, 960px);
+    }
+    .scale-50 {
+      width: min(50%, 420px);
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+    @media (max-width: 600px) {
+      .project-header,
+      .project-section {
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="project-page container">
+    <a class="back-link" href="../index.html">&larr; Back to Portfolio</a>
+    <header class="project-header">
+      <h1>NFC Lead Capture for Trade Shows</h1>
+      <div class="project-meta">
+        <p><strong>Project type:</strong> mobile-first lead capture opened from an NFC business card</p>
+        <p><strong>Goal:</strong> convert trade-show traffic into qualified, verified leads before granting access to product catalogs — and hand them off to Telegram with context for faster conversations.</p>
+      </div>
+      <div class="project-actions">
+        <a class="btn primary" href="https://github.com/NazarPauk/form" target="_blank" rel="noopener noreferrer">View Repository</a>
+        <a class="btn secondary" href="https://nazarpauk.github.io/form/" target="_blank" rel="noopener noreferrer">Open Live Form</a>
+      </div>
+      <figure class="hero-figure figure-scale scale-80">
+        <img src="../images/nfc-lead-capture/Form_Preview.png" alt="Desktop preview of the NFC lead capture form" />
+        <figcaption>Project preview (desktop)</figcaption>
+      </figure>
+    </header>
+
+    <div class="project-content">
+      <section class="project-section">
+        <h2>Why this matters (for event teams)</h2>
+        <ul>
+          <li>Gate content to raise intent. Prospects see catalogs only after a 10-second registration.</li>
+          <li>Verify phone numbers. 4-digit SMS codes remove fake entries and lift follow-up reach.</li>
+          <li>One source of truth. Every lead and action is written to a single Google Sheet — ready for outreach and analytics.</li>
+          <li>Instant next step. One-tap buttons to Telegram (with leadId context) or phone; VCF contact saves in one click.</li>
+          <li>Field-ready reliability. Works smoothly on mobile, handles weak internet, prevents spammy resends.</li>
+        </ul>
+      </section>
+
+      <section class="project-section">
+        <h2>User journey (end-to-end)</h2>
+        <div class="journey-steps">
+          <article class="journey-step">
+            <h3>1) NFC tap → Registration</h3>
+            <p>Scanning the NFC card opens a branded, mobile-first form. The user provides first/last name and phone (+38). Email and company are optional to keep friction low.</p>
+            <div class="image-gallery half">
+              <figure class="figure-scale scale-50">
+                <img src="../images/nfc-lead-capture/Form_registration.jpg" alt="Mobile registration form with minimal fields" />
+                <figcaption>Minimal registration — fast to complete on a busy show floor</figcaption>
+              </figure>
+            </div>
+            <p>After submit, the lead is created and the system saves device context (battery level) and geolocation when available over HTTPS (GitHub Pages hosting ensures this works consistently).</p>
+          </article>
+
+          <article class="journey-step">
+            <h3>2) Access screen with catalogs &amp; quick actions</h3>
+            <p>Once registered, users land on a clean “Catalogs &amp; Materials” screen. They can open catalogs (PDF/XLSX/WEB), save the company VCF, and jump to Telegram or call sales instantly.</p>
+            <div class="image-gallery half">
+              <figure class="figure-scale scale-50">
+                <img src="../images/nfc-lead-capture/Form_catalog.jpg" alt="Catalog selection screen with quick action buttons" />
+                <figcaption>Content hub shown only after registration — with one-tap actions</figcaption>
+              </figure>
+            </div>
+            <p>When the user taps any catalog, we ask them to verify their phone first.</p>
+          </article>
+
+          <article class="journey-step">
+            <h3>3) SMS verification before unlocking files</h3>
+            <p>The phone number is auto-filled from registration and cannot be edited, preventing verification of a different number. The resend button is locked for 40 seconds to avoid spam and cost spikes.</p>
+            <div class="image-gallery half">
+              <figure class="figure-scale scale-50">
+                <img src="../images/nfc-lead-capture/Form_Phone-confirm.jpg" alt="Phone verification screen with 4-digit code input and resend timer" />
+                <figcaption>4-digit code entry with a 40-second resend lock</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <article class="journey-step">
+            <h3>4) Real-time check &amp; response</h3>
+            <p>The code is validated through an automation scenario. The page receives a live success/error message and, if correct, opens the selected catalog.</p>
+            <div class="image-gallery full">
+              <figure class="figure-scale scale-80">
+                <img src="../images/nfc-lead-capture/Form_Make_confirm.png" alt="Make.com automation scenario that validates SMS codes" />
+                <figcaption>Make.com scenario — send/validate code via SMS-fly and respond to the form</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <article class="journey-step">
+            <h3>5) Lead database and status tracking</h3>
+            <p>All leads and every change of state (code sent, verified) are captured in one Google Sheet. Duplicates are prevented; phone numbers and codes are stored as strings so leading zeros and “+” symbols are never lost.</p>
+            <div class="image-gallery full">
+              <figure class="figure-scale scale-80">
+                <img src="../images/nfc-lead-capture/Form_Leads.png" alt="Automation flow showing deduplication and status updates for leads" />
+                <figcaption>Make.com lead flow — create/update, deduplicate, set statuses</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <article class="journey-step">
+            <h3>6) Single source of truth</h3>
+            <p>All data lives in one sheet for the sales team.</p>
+            <div class="image-gallery full">
+              <figure class="figure-scale scale-80">
+                <img src="../images/nfc-lead-capture/Form_Sheets.png" alt="Google Sheets database storing verified leads" />
+                <figcaption>Google Sheets — unified database for sales follow-up and reporting</figcaption>
+              </figure>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="project-section">
+        <h2>What gets captured (and why)</h2>
+        <ul>
+          <li>Contact: first name, last name, phone (+38), optional email &amp; company — enough for sales to follow up without scaring prospects away.</li>
+          <li>Context: geolocation (when permitted) and battery level (for contextual UX messages at the booth).</li>
+          <li>Messaging: Telegram chat ID &amp; username are stored when the visitor taps the Telegram button.</li>
+          <li>Verification: phone verified / code sent (for clean follow-up lists).</li>
+        </ul>
+      </section>
+
+      <section class="project-section">
+        <h2>Telegram handoff with context</h2>
+        <p>When the user opens Telegram from the form, we send their leadId along with the handoff. The bot uses this to pull the right record and personalize replies (no need to ask for details again). This increases response quality and shortens time-to-conversation.</p>
+      </section>
+
+      <section class="project-section">
+        <h2>Reliability &amp; abuse controls</h2>
+        <ul>
+          <li>Locked phone field on the verification page (prevents switching numbers mid-flow).</li>
+          <li>40-second cooldown on resends to protect budgets and SMS deliverability.</li>
+          <li>Offline guard: the form blocks submission without internet to avoid silent data loss.</li>
+          <li>Deduplication at write time (keeps the database clean).</li>
+          <li>String storage for phone/codes in Sheets (no formatting mishaps).</li>
+          <li>HTTPS hosting (GitHub Pages) to ensure geolocation works across modern browsers.</li>
+        </ul>
+      </section>
+
+      <section class="project-section">
+        <h2>Integrations (kept simple)</h2>
+        <p>Make.com (orchestration, webhooks) · SMS-fly (codes) · Google Sheets (DB) · Telegram Bot (immediate, contextual conversations using the passed leadId) · VCF (save contact in one tap)</p>
+      </section>
+
+      <section class="project-section">
+        <h2>My role and contributions</h2>
+        <ul>
+          <li>Designed the end-to-end flow for events.</li>
+          <li>Built the front-end (separate HTML/CSS/JS for clarity and fast iteration).</li>
+          <li>Implemented Telegram handoff with leadId for personalized bot context.</li>
+          <li>Created Make.com scenarios for lead creation, dedupe, and SMS verification.</li>
+          <li>Modeled the Google Sheets database (statuses, audit trail, safe string storage).</li>
+          <li>Added UX safeguards: resend timers, locked phone input, offline alerts, support number with one-tap copy.</li>
+          <li>Tuned mobile performance and handled cross-browser quirks.</li>
+        </ul>
+      </section>
+
+      <section class="project-section">
+        <h2>Results (template — fill with your numbers)</h2>
+        <ul>
+          <li>X% of booth visitors completed registration</li>
+          <li>Y% phone numbers successfully verified</li>
+          <li>Z% clicked through to catalogs</li>
+          <li>Avg. time to first Telegram reply: N minutes</li>
+          <li>Duplicates reduced by: M%</li>
+        </ul>
+      </section>
+
+    </div>
+  </main>
+  <script src="../script.js"></script>
+</body>
+</html>
