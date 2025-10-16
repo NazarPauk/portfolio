@@ -9,11 +9,26 @@
     yearSpan.textContent = new Date().getFullYear();
   }
 
+  const setBodyNavState = (isOpen) => {
+    document.body.classList.toggle('nav-open', isOpen);
+    if (navToggle) {
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    }
+  };
+
+  const closeNavMenu = () => {
+    if (navList) {
+      navList.classList.remove('open');
+    }
+    setBodyNavState(false);
+  };
+
   if (navToggle && navList) {
     navToggle.addEventListener('click', () => {
       const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', String(!expanded));
-      navList.classList.toggle('open');
+      const willOpen = !expanded;
+      setBodyNavState(willOpen);
+      navList.classList.toggle('open', willOpen);
     });
   }
 
@@ -26,15 +41,20 @@
           event.preventDefault();
           section.scrollIntoView({ behavior: 'smooth' });
           if (navList && navList.classList.contains('open')) {
-            navList.classList.remove('open');
-            if (navToggle) {
-              navToggle.setAttribute('aria-expanded', 'false');
-            }
+            closeNavMenu();
           }
         }
       }
     });
   });
+
+  if (navList) {
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && navList.classList.contains('open')) {
+        closeNavMenu();
+      }
+    });
+  }
 
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver(
