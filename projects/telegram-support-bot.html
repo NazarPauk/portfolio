@@ -86,17 +86,6 @@
       display: block;
       margin: 0;
     }
-    @supports (grid-template-rows: masonry) {
-      .command-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-template-rows: masonry;
-        grid-auto-flow: dense;
-      }
-      .command-card,
-      .support-card {
-        break-inside: avoid;
-      }
-    }
     .command-card {
       background: #f1f5f9;
       border-radius: var(--radius);
@@ -132,6 +121,11 @@
       width: 100%;
       border-radius: calc(var(--radius) * 0.75);
       box-shadow: var(--shadow);
+    }
+    .command-card img[src$="TGBOT_catalog.png"] {
+      width: 40%;
+      display: block;
+      margin: 0 auto;
     }
     @media (max-width: 599px) {
       .command-card img {
@@ -201,7 +195,6 @@
       </section>
       <section class="command-walkthrough">
         <h2>Command Walkthrough</h2>
-
         <!-- Replace your current cards container on this page with: -->
         <!--
         <section class="masonry">
@@ -211,7 +204,6 @@
         -->
         <section class="command-grid masonry">
             <article class="command-card card" aria-labelledby="cmd-start">
-
               <h3 id="cmd-start">/start</h3>
               <ul>
                 <li>Initializes the bot and displays the main navigation menu.</li>
