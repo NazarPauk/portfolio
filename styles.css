@@ -133,9 +133,10 @@ a {
   letter-spacing: 0.16em;
   color: var(--primary);
   background: linear-gradient(180deg, rgba(37, 99, 235, 0.2) 0%, rgba(37, 99, 235, 0) 100%);
-  padding: 3px;
+  padding: 3px 14px;
   border-radius: 999px 999px 0 0;
-  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.15);
+  line-height: 1.1;
+  white-space: nowrap;
 }
 
 .hero-text h1 {
