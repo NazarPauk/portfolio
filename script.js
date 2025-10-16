@@ -151,27 +151,32 @@
         closeButton.focus();
       };
 
-      projectImages.forEach((img) => {
-        const trigger = img.closest('figure') || img;
+      const boundTriggers = new WeakSet();
 
-        if (trigger.dataset.lightboxBound === 'true') {
+      const getCaption = (imageEl) => {
+        if (!imageEl) {
+          return '';
+        }
+
+        const figure = imageEl.closest('figure');
+        if (figure) {
+          const caption = figure.querySelector('figcaption');
+          if (caption) {
+            return caption.textContent.trim();
+          }
+        }
+
+        return '';
+      };
+
+      const bindTrigger = (trigger, resolveImage, labelSource) => {
+        if (!trigger || boundTriggers.has(trigger)) {
           return;
         }
 
-        const getCaption = () => {
-          const figure = img.closest('figure');
-          if (figure) {
-            const caption = figure.querySelector('figcaption');
-            if (caption) {
-              return caption.textContent.trim();
-            }
-          }
-          return '';
-        };
+        const sampleImage = labelSource || resolveImage();
+        const labelText = sampleImage ? getCaption(sampleImage) || sampleImage.alt : '';
 
-        const labelText = getCaption() || img.alt;
-
-        trigger.dataset.lightboxBound = 'true';
         trigger.classList.add('lightbox-trigger');
         trigger.setAttribute('tabindex', '0');
         trigger.setAttribute('role', 'button');
@@ -182,19 +187,70 @@
         );
 
         const handleOpen = (event) => {
-          if (event.type === 'keydown' && event.key !== 'Enter' && event.key !== ' ') {
+          if (event && event.type === 'keydown' && event.key !== 'Enter' && event.key !== ' ') {
             return;
           }
 
-          if (event.type === 'keydown') {
+          if (event && event.type === 'keydown') {
             event.preventDefault();
           }
 
-          openOverlay(img, getCaption());
+          const imageToShow = resolveImage(event);
+          if (!imageToShow) {
+            return;
+          }
+
+          openOverlay(imageToShow, getCaption(imageToShow));
         };
 
         trigger.addEventListener('click', handleOpen);
         trigger.addEventListener('keydown', handleOpen);
+
+        if (trigger instanceof HTMLElement) {
+          trigger.dataset.lightboxBound = 'true';
+        }
+
+        boundTriggers.add(trigger);
+      };
+
+      projectImages.forEach((img) => {
+        const figure = img.closest('figure');
+        const figureImages = figure ? figure.querySelectorAll('img') : null;
+        const hasMultipleImages = figureImages ? figureImages.length > 1 : false;
+
+        if (hasMultipleImages) {
+          bindTrigger(
+            img,
+            (event) => {
+              if (event && event.currentTarget instanceof HTMLImageElement) {
+                return event.currentTarget;
+              }
+              return img;
+            },
+            img
+          );
+          return;
+        }
+
+        if (figure) {
+          bindTrigger(
+            figure,
+            () => img,
+            img
+          );
+          return;
+        }
+
+        bindTrigger(
+          img,
+          (event) => {
+            if (event && event.currentTarget instanceof HTMLImageElement) {
+              return event.currentTarget;
+            }
+            return img;
+          },
+          img
+        );
       });
 
       closeButton.addEventListener('click', closeOverlay);
