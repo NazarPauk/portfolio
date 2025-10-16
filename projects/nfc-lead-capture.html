@@ -89,14 +89,34 @@
     .image-gallery.full {
       grid-template-columns: 1fr;
     }
+
+    .image-gallery {
+      justify-items: center;
+    }
     .image-gallery figure {
       margin: 0;
       display: grid;
       gap: 0.75rem;
+
+      justify-items: center;
     }
     .image-gallery figcaption {
       font-size: 0.95rem;
       color: var(--muted);
+    }
+
+    .figure-scale {
+      justify-self: center;
+    }
+    .figure-scale img {
+      width: 100%;
+      height: auto;
+    }
+    .scale-80 {
+      width: min(80%, 960px);
+    }
+    .scale-50 {
+      width: min(50%, 420px);
     }
     .back-link {
       display: inline-flex;
@@ -126,9 +146,11 @@
         <a class="btn primary" href="https://github.com/NazarPauk/form" target="_blank" rel="noopener noreferrer">View Repository</a>
         <a class="btn secondary" href="https://nazarpauk.github.io/form/" target="_blank" rel="noopener noreferrer">Open Live Form</a>
       </div>
-      <figure class="hero-figure">
+
+      <figure class="hero-figure figure-scale scale-80">
         <img src="../images/nfc-lead-capture/Form_Preview.png" alt="Desktop preview of the NFC lead capture form" />
-        <figcaption>Form_Preview.png — Project preview (desktop)</figcaption>
+        <figcaption>Project preview (desktop)</figcaption>
+
       </figure>
     </header>
 
@@ -151,7 +173,7 @@
             <h3>1) NFC tap → Registration</h3>
             <p>Scanning the NFC card opens a branded, mobile-first form. The user provides first/last name and phone (+38). Email and company are optional to keep friction low.</p>
             <div class="image-gallery half">
-              <figure>
+              <figure class="figure-scale scale-50">
                 <img src="../images/nfc-lead-capture/Form_registration.jpg" alt="Mobile registration form with minimal fields" />
                 <figcaption>Minimal registration — fast to complete on a busy show floor</figcaption>
               </figure>
@@ -163,7 +185,7 @@
             <h3>2) Access screen with catalogs &amp; quick actions</h3>
             <p>Once registered, users land on a clean “Catalogs &amp; Materials” screen. They can open catalogs (PDF/XLSX/WEB), save the company VCF, and jump to Telegram or call sales instantly.</p>
             <div class="image-gallery half">
-              <figure>
+              <figure class="figure-scale scale-50">
                 <img src="../images/nfc-lead-capture/Form_catalog.jpg" alt="Catalog selection screen with quick action buttons" />
                 <figcaption>Content hub shown only after registration — with one-tap actions</figcaption>
               </figure>
@@ -175,7 +197,7 @@
             <h3>3) SMS verification before unlocking files</h3>
             <p>The phone number is auto-filled from registration and cannot be edited, preventing verification of a different number. The resend button is locked for 40 seconds to avoid spam and cost spikes.</p>
             <div class="image-gallery half">
-              <figure>
+              <figure class="figure-scale scale-50">
                 <img src="../images/nfc-lead-capture/Form_Phone-confirm.jpg" alt="Phone verification screen with 4-digit code input and resend timer" />
                 <figcaption>4-digit code entry with a 40-second resend lock</figcaption>
               </figure>
@@ -186,7 +208,7 @@
             <h3>4) Real-time check &amp; response</h3>
             <p>The code is validated through an automation scenario. The page receives a live success/error message and, if correct, opens the selected catalog.</p>
             <div class="image-gallery full">
-              <figure>
+              <figure class="figure-scale scale-80">
                 <img src="../images/nfc-lead-capture/Form_Make_confirm.png" alt="Make.com automation scenario that validates SMS codes" />
                 <figcaption>Make.com scenario — send/validate code via SMS-fly and respond to the form</figcaption>
               </figure>
@@ -197,7 +219,7 @@
             <h3>5) Lead database and status tracking</h3>
             <p>All leads and every change of state (code sent, verified) are captured in one Google Sheet. Duplicates are prevented; phone numbers and codes are stored as strings so leading zeros and “+” symbols are never lost.</p>
             <div class="image-gallery full">
-              <figure>
+              <figure class="figure-scale scale-80">
                 <img src="../images/nfc-lead-capture/Form_Leads.png" alt="Automation flow showing deduplication and status updates for leads" />
                 <figcaption>Make.com lead flow — create/update, deduplicate, set statuses</figcaption>
               </figure>
@@ -208,7 +230,7 @@
             <h3>6) Single source of truth</h3>
             <p>All data lives in one sheet for the sales team.</p>
             <div class="image-gallery full">
-              <figure>
+              <figure class="figure-scale scale-80">
                 <img src="../images/nfc-lead-capture/Form_Sheets.png" alt="Google Sheets database storing verified leads" />
                 <figcaption>Google Sheets — unified database for sales follow-up and reporting</figcaption>
               </figure>
