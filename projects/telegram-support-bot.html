@@ -109,6 +109,10 @@
       display: grid;
       gap: 0.75rem;
     }
+    .command-media {
+      display: grid;
+      gap: 0.75rem;
+    }
     .command-card .image-stack {
       display: grid;
       gap: 0.75rem;
@@ -116,6 +120,20 @@
     .command-card .image-stack.two-up {
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       align-items: start;
+    }
+    .command-card .image-stack.two-up > figure {
+      margin: 0;
+      display: grid;
+      gap: 0.5rem;
+    }
+    .command-card .image-stack.two-up > figure figcaption {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .figure-summary {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--muted);
     }
     .command-card img {
       width: 100%;
@@ -131,6 +149,9 @@
       .command-card img {
         max-width: 360px;
         justify-self: center;
+      }
+      .command-card img[src$="TGBOT_catalog.png"] {
+        width: 100%;
       }
     }
     .command-card figcaption {
@@ -159,6 +180,17 @@
       padding-left: 1.1rem;
       display: grid;
       gap: 0.35rem;
+    }
+    .telegram-support-bot-page .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
     .back-link {
       display: inline-flex;
@@ -210,13 +242,19 @@
                 <li>Creates or updates the user record in Google Sheets with name, chat ID, and start time.</li>
                 <li>Sends a short onboarding message that explains how to use the assistant.</li>
               </ul>
-              <figure>
+              <div class="command-media" role="group" aria-label="Start command screenshots">
                 <div class="image-stack two-up">
-                  <img src="../images/telegram-bot/TGBOT_Start.png" alt="Original Telegram bot start command onboarding screen">
-                  <img src="../images/telegram-bot/TGBOT_start_make.png" alt="Refreshed Telegram bot start command onboarding screen">
+                  <figure>
+                    <img src="../images/telegram-bot/TGBOT_Start.png" alt="Original Telegram bot start command onboarding screen">
+                    <figcaption class="sr-only">Original /start onboarding sequence</figcaption>
+                  </figure>
+                  <figure>
+                    <img src="../images/telegram-bot/TGBOT_start_make.png" alt="Refreshed Telegram bot start command onboarding screen">
+                    <figcaption class="sr-only">Updated /start onboarding sequence</figcaption>
+                  </figure>
                 </div>
-                <figcaption>Original and refreshed welcome sequences that register the user and guide them through the main menu.</figcaption>
-              </figure>
+                <p class="figure-summary">Original and refreshed welcome sequences that register the user and guide them through the main menu.</p>
+              </div>
             </article>
             <article class="command-card card" aria-labelledby="cmd-catalog">
               <h3 id="cmd-catalog">/catalog</h3>
@@ -240,13 +278,19 @@
                 <li>Writes every answer into Google Sheets (Sheet 2) for later personalization.</li>
                 <li>Returns the AI assistant’s best match from the catalog with a “Contact a manager” button.</li>
               </ul>
-              <figure>
+              <div class="command-media" role="group" aria-label="Price command screenshots">
                 <div class="image-stack two-up">
-                  <img src="../images/telegram-bot/TGBOT_price.png" alt="Original Telegram bot pricing flow screen">
-                  <img src="../images/telegram-bot/TGBOT_Price_make.png" alt="Step-based Telegram bot pricing assistant flow">
+                  <figure>
+                    <img src="../images/telegram-bot/TGBOT_price.png" alt="Original Telegram bot pricing flow screen">
+                    <figcaption class="sr-only">Original /price command flow</figcaption>
+                  </figure>
+                  <figure>
+                    <img src="../images/telegram-bot/TGBOT_Price_make.png" alt="Step-based Telegram bot pricing assistant flow">
+                    <figcaption class="sr-only">Updated /price guided assistant flow</figcaption>
+                  </figure>
                 </div>
-                <figcaption>Side-by-side pricing flows showing the legacy price sheet and the new guided assistant with data capture.</figcaption>
-              </figure>
+                <p class="figure-summary">Side-by-side pricing flows showing the legacy price sheet and the new guided assistant with data capture.</p>
+              </div>
             </article>
             <article class="command-card card" aria-labelledby="cmd-faq">
               <h3 id="cmd-faq">/faq</h3>
@@ -255,13 +299,19 @@
                 <li>Provides instant clarification on catalog, delivery, warranty, support, and more.</li>
                 <li>Interactive callback buttons reveal each answer in a clean, quoted format while Make orchestrates the flow.</li>
               </ul>
-              <figure>
+              <div class="command-media" role="group" aria-label="FAQ command screenshots">
                 <div class="image-stack two-up">
-                  <img src="../images/telegram-bot/TGBOT_faq.png" alt="Original FAQ command with quick reply buttons">
-                  <img src="../images/telegram-bot/TGBOT_faq_make.png" alt="Updated FAQ command with callback buttons and quoted answers">
+                  <figure>
+                    <img src="../images/telegram-bot/TGBOT_faq.png" alt="Original FAQ command with quick reply buttons">
+                    <figcaption class="sr-only">Original /faq quick reply layout</figcaption>
+                  </figure>
+                  <figure>
+                    <img src="../images/telegram-bot/TGBOT_faq_make.png" alt="Updated FAQ command with callback buttons and quoted answers">
+                    <figcaption class="sr-only">Updated /faq callback explorer</figcaption>
+                  </figure>
                 </div>
-                <figcaption>FAQ experiences transitioning from the original quick replies to the new callback-driven explorer.</figcaption>
-              </figure>
+                <p class="figure-summary">FAQ experiences transitioning from the original quick replies to the new callback-driven explorer.</p>
+              </div>
             </article>
             <article class="command-card card" aria-labelledby="cmd-contacts">
               <h3 id="cmd-contacts">/contacts</h3>
@@ -277,13 +327,19 @@
                 <li>Shares confident recommendations in-chat, enriched with the best-fit catalog entries from CSV tables.</li>
                 <li>Escalates to a live manager whenever the dataset is insufficient or confidence drops.</li>
               </ul>
-              <figure>
+              <div class="command-media" role="group" aria-label="Assistant command screenshots">
                 <div class="image-stack two-up">
-                  <img src="../images/telegram-bot/TGBOT_responseai.png" alt="Original AI assistant response inside the Telegram bot">
-                  <img src="../images/telegram-bot/TGBOT_preview.png" alt="Updated AI assistant preview delivering tailored suggestions">
+                  <figure>
+                    <img src="../images/telegram-bot/TGBOT_responseai.png" alt="Original AI assistant response inside the Telegram bot">
+                    <figcaption class="sr-only">Original /assistant response preview</figcaption>
+                  </figure>
+                  <figure>
+                    <img src="../images/telegram-bot/TGBOT_preview.png" alt="Updated AI assistant preview delivering tailored suggestions">
+                    <figcaption class="sr-only">Updated /assistant preview with tailored suggestions</figcaption>
+                  </figure>
                 </div>
-                <figcaption>AI assistant responses shown in both the original interface and the updated preview-focused design.</figcaption>
-              </figure>
+                <p class="figure-summary">AI assistant responses shown in both the original interface and the updated preview-focused design.</p>
+              </div>
             </article>
             <article class="command-card card" aria-labelledby="cmd-manager">
               <h3 id="cmd-manager">/manager</h3>
